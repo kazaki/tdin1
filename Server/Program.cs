@@ -17,7 +17,7 @@ namespace Server
 
             Console.ReadLine();
 
-            restaurant.addOrder("Pedido exemplo", 10, 0, Order.BAR, 20);
+            restaurant.addOrder(0, "Pedido exemplo", 10, Order.BAR, 20);
 
             restaurant.printOrders();
 
@@ -40,31 +40,33 @@ namespace Server
             Orders = new List<Order> {};
         }
 
-        public bool addOrder(string description, int quantity, int tableID, int type, int price)
+        public bool addOrder(int tableID, string description, int quantity, int type, int price)
         {
 
-            Console.WriteLine("[NEW ORDER]");
-            Console.WriteLine("\tDescription: " + description);
-            Console.WriteLine("\tQuantity: " + quantity);
-            Console.WriteLine("\tTable ID: " + tableID);
-            Console.WriteLine("\tType: " + type);
-            Console.WriteLine("\tPrice: " + price);
+            Console.WriteLine("[NEW ORDER] (" + description + " | " + quantity + " | " + tableID + " | " + type + " | " + price + ")");
 
             Table tbl = Tables.ElementAt(tableID);
             if (tbl.Occupied == true)
             {
-                Console.WriteLine("<NEW ORDER DENIED> Table occupied. ");
+                Console.WriteLine("<NEW ORDER DENIED> Table occupied. \n");
                 return true;
             }
             
-            Orders.Add(new Order(description, quantity, tableID, type, price));
+            Orders.Add(new Order(description, quantity, tbl, type, price));
+            tbl.Orders.Add(Orders.Last());
             tbl.Occupied = true;
-            Console.WriteLine("<NEW ORDER ACCEPTED>");
+            Console.WriteLine("<NEW ORDER ACCEPTED>\n");
             return true;
+        }
+
+        public void consultTable(int id)
+        {
+
         }
 
         public void printTables()
         {
+            Console.WriteLine("All Tables:");
             foreach (var t in Tables)
             {
                 string status = "FREE";
@@ -75,16 +77,17 @@ namespace Server
 
         public void printOrders()
         {
-            Console.WriteLine("Orders:");
+            Console.WriteLine("All Orders:");
             foreach (var o in Orders)
             {
                 Console.WriteLine("[" + o.Id + "]");
-                Console.WriteLine("\tDescription: " + o.Description);
-                Console.WriteLine("\tQuantity: " + o.Quantity);
-                Console.WriteLine("\tTableId: " + o.TableId);
-                Console.WriteLine("\tType: " + o.Type);
-                Console.WriteLine("\tPrice: " + o.Price);
-                Console.WriteLine("\tStatus: " + o.Status);
+                Console.WriteLine("  Description: " + o.Description);
+                Console.WriteLine("  Quantity: " + o.Quantity);
+                Console.WriteLine("  TableId: " + o.Table.Id);
+                Console.WriteLine("  Type: " + o.Type);
+                Console.WriteLine("  Price: " + o.Price);
+                Console.WriteLine("  Status: " + o.Status);
+                Console.WriteLine();
             }
         }
     }
@@ -95,11 +98,13 @@ namespace Server
 
         public int Id { get; }
         public bool Occupied { get; set; }
+        public IList<Order> Orders { get; set; }
 
         public Table()
         {
             Id = LastId++;
             Occupied = false;
+            Orders = new List<Order> {};
         }
     }
 
@@ -115,7 +120,7 @@ namespace Server
 
         public int Quantity { get; set; }
 
-        public int TableId { get; }
+        public Table Table { get; set; }
 
         public int Type { get; set; } // 0 - Bar, 1 - Kitchen
 
@@ -123,12 +128,12 @@ namespace Server
 
         public int Status { get; set; } // 0 - Pending, 1 - Preparation, 2 - Ready
 
-        public Order(string description, int quantity, int tableID, int type, int price)
+        public Order(string description, int quantity, Table table, int type, int price)
         {
             Id = LastId++;
             Description = description;
             Quantity = quantity;
-            TableId = tableID;
+            Table = table;
             Type = type;
             Price = price;
             Status = 0;
