@@ -17,7 +17,8 @@ namespace Server
 
             Console.ReadLine();
 
-            restaurant.addOrder(0, "Pedido exemplo", 10, Order.BAR, 20);
+            restaurant.addOrder(0, "Sandes de Fiambre", 1, Order.BAR, 10);
+            restaurant.addOrder(0, "Sumo de Laranja", 1, Order.BAR, 10);
 
             restaurant.printOrders();
 
@@ -26,6 +27,11 @@ namespace Server
             restaurant.printTables();
 
             Console.ReadLine();
+
+            restaurant.consultTable(0);
+
+            Console.ReadLine();
+
         }
     }
 
@@ -46,12 +52,7 @@ namespace Server
             Console.WriteLine("[NEW ORDER] (" + description + " | " + quantity + " | " + tableID + " | " + type + " | " + price + ")");
 
             Table tbl = Tables.ElementAt(tableID);
-            if (tbl.Occupied == true)
-            {
-                Console.WriteLine("<NEW ORDER DENIED> Table occupied. \n");
-                return true;
-            }
-            
+
             Orders.Add(new Order(description, quantity, tbl, type, price));
             tbl.Orders.Add(Orders.Last());
             tbl.Occupied = true;
@@ -61,7 +62,12 @@ namespace Server
 
         public void consultTable(int id)
         {
-
+            Table tbl = Tables.ElementAt(id);
+            Console.WriteLine("[Table "+id+"'s orders] " + tbl.getTotalPrice() + " euro(s)");
+            foreach (Order o in tbl.Orders)
+            {
+                Console.WriteLine("[" + o.Id + "] (" + o.Description + " | " + o.Quantity + " | " + o.Type + ") " + o.Price + " euro(s)");
+            }
         }
 
         public void printTables()
@@ -105,6 +111,13 @@ namespace Server
             Id = LastId++;
             Occupied = false;
             Orders = new List<Order> {};
+        }
+
+        public int getTotalPrice()
+        {
+            int sum = 0;
+            foreach (Order o in Orders) sum += o.Price;
+            return sum;
         }
     }
 

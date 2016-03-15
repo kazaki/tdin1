@@ -15,6 +15,15 @@ namespace Dining_Room
         public Form1()
         {
             InitializeComponent();
+            customInitialize();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
+
+
+
 }
