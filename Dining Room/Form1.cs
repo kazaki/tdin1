@@ -20,7 +20,7 @@ namespace Dining_Room
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            this.dataGridView1.Rows.Add("1", "sandes", 3, "Ready");
         }
     }
 

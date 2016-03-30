@@ -56,9 +56,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -145,14 +150,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 126);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(625, 121);
-            this.listBox1.TabIndex = 7;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -163,13 +160,60 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Orders";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnTable,
+            this.ColumnItem,
+            this.ColumnQuantity,
+            this.ColumnStatus});
+            this.dataGridView1.Location = new System.Drawing.Point(17, 127);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(621, 109);
+            this.dataGridView1.TabIndex = 9;
+            // 
+            // ColumnTable
+            // 
+            this.ColumnTable.HeaderText = "Table";
+            this.ColumnTable.Name = "ColumnTable";
+            this.ColumnTable.ReadOnly = true;
+            // 
+            // ColumnItem
+            // 
+            this.ColumnItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnItem.HeaderText = "Item";
+            this.ColumnItem.Name = "ColumnItem";
+            this.ColumnItem.ReadOnly = true;
+            // 
+            // ColumnQuantity
+            // 
+            this.ColumnQuantity.HeaderText = "Quantity";
+            this.ColumnQuantity.Name = "ColumnQuantity";
+            this.ColumnQuantity.ReadOnly = true;
+            // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.HeaderText = "Status";
+            this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 261);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -180,6 +224,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,6 +249,7 @@
             new ComboBoxItem("Prego no Prato", 5),
             new ComboBoxItem("Filetes de Pescada", 6)});
             this.comboBox2.SelectedIndex = 0;
+
         }
 
 
@@ -217,8 +263,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
     }
 }
 
