@@ -13,3 +13,5 @@ C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\obj\Debu
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\bin\Debug\Server.exe
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\bin\Debug\Server.pdb
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\bin\Debug\Common.dll
+C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\bin\Debug\Common.pdb

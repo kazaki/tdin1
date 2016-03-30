@@ -16,3 +16,5 @@ C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\obj
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\obj\Debug\Dining_Room.Form1.resources
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\obj\Debug\Dining_Room.Properties.Resources.resources
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\obj\Debug\Dining Room.csproj.GenerateResource.Cache
+C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\bin\Debug\Common.dll
+C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\bin\Debug\Common.pdb
