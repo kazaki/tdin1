@@ -32,6 +32,8 @@ namespace Dining_Room
         {
 
             restaurant.printTables();
+
+            this.dataGridView1.Rows.Add("1", "sandes", 3, "Ready");
         }
     }
 
