@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+[Serializable]
 public class Table
 {
     private static int LastId = 0;
@@ -22,48 +23,85 @@ public class Table
     public int getTotalPrice()
     {
         int sum = 0;
-        foreach (Order o in Orders) sum += o.Price;
+        foreach (Order o in Orders) sum += Convert.ToInt32(o.Item.Price);
         return sum;
     }
 }
 
+[Serializable]
 public class Order
 {
     public const int BAR = 0, KITCHEN = 1, PENDING = 0, PREPERATION = 1, READY = 2;
 
     private static int LastId = 0;
-
     public int Id { get; }
-
-    public string Description { get; set; }
-
+    public Item Item { get; set; }
     public int Quantity { get; set; }
-
     public Table Table { get; set; }
-
-    public int Type { get; set; } // 0 - Bar, 1 - Kitchen
-
-    public int Price { get; set; }
-
     public int Status { get; set; } // 0 - Pending, 1 - Preparation, 2 - Ready
 
-    public Order(string description, int quantity, Table table, int type, int price)
+    public Order(Item item, int quantity, Table table)
     {
         Id = LastId++;
-        Description = description;
+        Item = item;
         Quantity = quantity;
         Table = table;
-        Type = type;
-        Price = price;
         Status = 0;
+    }
+
+    public string getStatus()
+    {
+        switch (Status)
+        {
+            case 0:
+                return "Pending";
+            case 1:
+                return "Preparation";
+            case 2:
+                return "Ready";
+            default:
+                return "";
+        }
     }
 
 }
 
+[Serializable]
+public class Item
+{
+    public int Id { get; }
+    public string Name { get; }
+    public decimal Price { get; }
+    public int Type { get; }
+
+    public Item(int id, string name, decimal price, int type)
+    {
+        this.Id = id;
+        this.Name = name;
+        this.Price = price;
+        this.Type = type;
+    }
+}
+
+public enum Operation { New, Change };
+public delegate void AlterDelegate(Operation op, Order order);
+
 public interface IOrdersList
 {
-    bool addOrder(int tableID, string description, int quantity, int type, int price);
+    event AlterDelegate alterEvent;
+
+    IList<Item> getMenuItems();
+    bool addOrder(int tableID, int itemId, int quantity);
     void consultTable(int id);
     void printTables();
     void printOrders();
+}
+
+public class AlterEventRepeater : MarshalByRefObject
+{
+    public event AlterDelegate alterEvent;
+
+    public override object InitializeLifetimeService() { return null; }
+
+    public void Repeater(Operation op, Order order) { if (alterEvent != null) alterEvent(op, order); }
 }

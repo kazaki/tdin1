@@ -1,4 +1,6 @@
-﻿namespace Dining_Room
+﻿using System.Collections.Generic;
+
+namespace Dining_Room
 {
     public class ComboBoxItem
     {
@@ -48,9 +50,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbTable = new System.Windows.Forms.ComboBox();
+            this.nudQuantity = new System.Windows.Forms.NumericUpDown();
+            this.cbMenu = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -62,52 +64,52 @@
             this.ColumnItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cbTable
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 37);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 33);
-            this.comboBox1.TabIndex = 0;
+            this.cbTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTable.FormattingEnabled = true;
+            this.cbTable.Location = new System.Drawing.Point(12, 37);
+            this.cbTable.Name = "cbTable";
+            this.cbTable.Size = new System.Drawing.Size(121, 33);
+            this.cbTable.TabIndex = 0;
             // 
-            // numericUpDown1
+            // nudQuantity
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(427, 38);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudQuantity.Location = new System.Drawing.Point(427, 38);
+            this.nudQuantity.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.nudQuantity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(54, 31);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nudQuantity.Name = "nudQuantity";
+            this.nudQuantity.Size = new System.Drawing.Size(54, 31);
+            this.nudQuantity.TabIndex = 1;
+            this.nudQuantity.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // comboBox2
+            // cbMenu
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(139, 37);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(282, 33);
-            this.comboBox2.TabIndex = 2;
+            this.cbMenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMenu.FormattingEnabled = true;
+            this.cbMenu.Location = new System.Drawing.Point(139, 37);
+            this.cbMenu.Name = "cbMenu";
+            this.cbMenu.Size = new System.Drawing.Size(282, 33);
+            this.cbMenu.TabIndex = 2;
             // 
             // label1
             // 
@@ -218,12 +220,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbMenu);
+            this.Controls.Add(this.nudQuantity);
+            this.Controls.Add(this.cbTable);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -232,32 +235,31 @@
 
         private void customInitialize()
         {
-            this.comboBox1.Items.AddRange(new ComboBoxItem[] {
+            /*Cb das mesas*/
+            this.cbTable.Items.AddRange(new ComboBoxItem[] {
             new ComboBoxItem("1", 1),
             new ComboBoxItem("2", 2),
             new ComboBoxItem("3", 3),
             new ComboBoxItem("4", 4),
             new ComboBoxItem("5", 5),
             new ComboBoxItem("6", 6)});
-            this.comboBox1.SelectedIndex = 0;
+            this.cbTable.SelectedIndex = 0;
 
-            this.comboBox2.Items.AddRange(new ComboBoxItem[] {
-            new ComboBoxItem("Sandes de Fiambre", 1),
-            new ComboBoxItem("Sumo de Laranja", 2),
-            new ComboBoxItem("Tosta Mista", 3),
-            new ComboBoxItem("Omelete Mista", 4),
-            new ComboBoxItem("Prego no Prato", 5),
-            new ComboBoxItem("Filetes de Pescada", 6)});
-            this.comboBox2.SelectedIndex = 0;
+            /*CB dos menus*/
+            IList<Item> items = orderManager.getMenuItems();
+            this.cbMenu.DataSource = items;
+            this.cbMenu.DisplayMember = "Name";
+            this.cbMenu.ValueMember = "Id";
+            this.cbMenu.SelectedIndex = 0;
 
         }
 
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbTable;
+        private System.Windows.Forms.NumericUpDown nudQuantity;
+        private System.Windows.Forms.ComboBox cbMenu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
