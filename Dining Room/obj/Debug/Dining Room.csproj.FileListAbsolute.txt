@@ -18,3 +18,14 @@ C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\obj
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\obj\Debug\Dining Room.csproj.GenerateResource.Cache
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\bin\Debug\Common.dll
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Dining Room\bin\Debug\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\bin\Debug\Dining Room.exe.config
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\obj\Debug\Dining Room.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\obj\Debug\Dining Room.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\obj\Debug\Dining Room.csprojResolveAssemblyReference.cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\obj\Debug\Dining_Room.Form1.resources
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\obj\Debug\Dining_Room.Properties.Resources.resources
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\obj\Debug\Dining Room.csproj.GenerateResource.Cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\bin\Debug\Dining Room.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\bin\Debug\Dining Room.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\bin\Debug\Common.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Dining Room\bin\Debug\Common.pdb

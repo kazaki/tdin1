@@ -17,7 +17,7 @@ namespace Server
 
 
 
-            RestaurantHandler restaurant = new RestaurantHandler();
+            OrdersList restaurant = new OrdersList();
 
             restaurant.printTables();
 

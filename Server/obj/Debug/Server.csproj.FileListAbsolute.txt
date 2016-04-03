@@ -15,3 +15,13 @@ C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\bin\Debu
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\bin\Debug\Common.dll
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Server\bin\Debug\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Debug\Server.exe.config
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\obj\Debug\Server.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\obj\Debug\Server.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Debug\Server.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Debug\Server.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Debug\Common.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Debug\OrdersList.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Debug\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Debug\OrdersList.pdb

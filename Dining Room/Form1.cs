@@ -15,14 +15,14 @@ namespace Dining_Room
     public partial class Form1 : Form
     {
 
-        RestaurantHandler restaurant;
+        IOrdersList restaurant;
 
         public Form1()
         {
 
             RemotingConfiguration.Configure("Dining Room.exe.config", false);
 
-            restaurant = (RestaurantHandler)RemoteNew.New(typeof(RestaurantHandler));
+            restaurant = (IOrdersList)RemoteNew.New(typeof(IOrdersList));
 
             InitializeComponent();
             customInitialize();

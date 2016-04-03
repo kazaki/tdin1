@@ -3,3 +3,8 @@ C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Common\bin\Debu
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Common\obj\Debug\Common.dll
 C:\Users\Pedro\Documents\Visual Studio 2015\Projects\tdin1\tdin1\Common\obj\Debug\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Common\bin\Debug\Common.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Common\bin\Debug\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Common\obj\Debug\Common.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Common\obj\Debug\Common.pdb
