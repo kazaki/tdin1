@@ -67,6 +67,7 @@ namespace Bar___Kitchen
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(784, 425);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // clmnQuantity
             // 
@@ -85,13 +86,13 @@ namespace Bar___Kitchen
             // 
             // cmlnStatus
             // 
-            this.cmlnStatus.HeaderText = "Status";
+            this.cmlnStatus.HeaderText = "Current Status";
             this.cmlnStatus.Name = "cmlnStatus";
             this.cmlnStatus.ReadOnly = true;
             // 
             // clmnChangeStatus
             // 
-            this.clmnChangeStatus.HeaderText = "Change Status";
+            this.clmnChangeStatus.HeaderText = "Change Status To:";
             this.clmnChangeStatus.Name = "clmnChangeStatus";
             this.clmnChangeStatus.ReadOnly = true;
             // 
@@ -172,24 +173,25 @@ namespace Bar___Kitchen
             dataGridView1.Columns[0].DataPropertyName = "Quantity";
             dataGridView1.Columns[1].DataPropertyName = "StringItem";
             dataGridView1.Columns[2].DataPropertyName = "Status";
+            dataGridView1.Columns[3].DataPropertyName = "NextStatus";
             foreach (Order order in orders)
             {
-                this.UpdateTabelaOrders(order);
+                this.UpdateTabelaOrders(order, Operation.New);
             }
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmlnStatus;
-        private System.Windows.Forms.DataGridViewButtonColumn clmnChangeStatus;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmlnStatus;
+        private System.Windows.Forms.DataGridViewButtonColumn clmnChangeStatus;
     }
 }
 

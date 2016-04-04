@@ -232,7 +232,7 @@ namespace Dining_Room
             this.Controls.Add(this.nudQuantity);
             this.Controls.Add(this.cbTable);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "POS: Dinning Room";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -282,7 +282,7 @@ namespace Dining_Room
             dataGridView1.Columns[3].DataPropertyName = "Status";
             foreach (Order order in orders)
             {
-                this.UpdateTabelaOrders(order);
+                this.UpdateTabelaOrders(order, Operation.New);
             }
         }
 

@@ -10,8 +10,8 @@ namespace Dining_Room
         private BindingSource bsOrders; //BindingSource para o dataGridView1
         IOrdersList orderManager; //Objeto Remoto
         AlterEventRepeater evRepeater; //Subscritor dos eventos
-        public delegate void UpdateTabelaOrdersCallback(Order order); //Para conseguir alterar a interface com um processo exterior
-        
+        public delegate void UpdateTabelaOrdersCallback(Order order, Operation op); //Para conseguir alterar a interface com um processo exterior
+
         public Form1()
         {
             RemotingConfiguration.Configure("Dining Room.exe.config", false);
@@ -32,21 +32,20 @@ namespace Dining_Room
         /* Chamado após evento subscrito de alteração */
         public void DoAlterations(Operation op, Order order)
         {
-            switch (op)
-            {
-                case Operation.New:
-                    Invoke(new UpdateTabelaOrdersCallback(this.UpdateTabelaOrders), new object[] { order });
-                    break;
-                case Operation.Change:
-                    break;
-            }
+            Invoke(new UpdateTabelaOrdersCallback(this.UpdateTabelaOrders), new object[] { order, op });
         }
 
         /* Faz alterações à dataGridView1 */
-        private void UpdateTabelaOrders(Order order)
+        private void UpdateTabelaOrders(Order order, Operation op)
         {
-            bsOrders.Add(order);
-            //dataGridView1.Rows.Add(order.Table.Id + 1, order.Item.Name, order.Quantity, order.getStatus());
+            if (op == Operation.New)
+            {
+                bsOrders.Add(order);
+            }
+            else if (op == Operation.Change)
+            {
+                bsOrders[bsOrders.IndexOf(order)] = order;
+            }
         }
 
         /* Add order */

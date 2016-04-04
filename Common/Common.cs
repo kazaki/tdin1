@@ -33,7 +33,7 @@ public class Table
 public class Order
 {
     private static int LastId = 0;
-    public int Id { get; }
+    public int Id { get; set; }
     public Item Item { get; set; }
     public int Quantity { get; set; }
     public Table Table { get; set; }
@@ -48,9 +48,16 @@ public class Order
         Status = OrderStatus.Pending;
     }
 
+    public override bool Equals(object other)
+    {
+        if (other == null) return false;
+        return ((Order)other).Id == Id;
+    }
+
     /* Estes 2 métodos foram necessários, por a classe Order ser um "objeto complexo", para mostrar os dados fazendo binding da classe Order nos dataGridView */
     public string StringItem { get { return Item.Name; } }
     public string StringTable { get { return (Table.Id + 1).ToString(); } }
+    public OrderStatus NextStatus { get { if (Status < OrderStatus.Ready) return Status + 1; else return OrderStatus.Ready; } }
 
 }
 
@@ -77,9 +84,10 @@ public interface IOrdersList
 {
     event AlterDelegate alterEvent;
 
-    IList<Item> getMenuItems();
+    List<Item> getMenuItems();
     bool addOrder(int tableID, int itemId, int quantity);
-    IList<Order> getOrders();
+    List<Order> getOrders();
+    void changeOrderStatus(Order o, OrderStatus newOS);
     void consultTable(int id);
     void printTables();
     void printOrders();

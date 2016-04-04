@@ -5,9 +5,9 @@ using System.Threading;
 
 public class OrdersList : MarshalByRefObject, IOrdersList
 {
-    private IList<Table> Tables;
-    private IList<Order> Orders;
-    private IList<Item> MenuItems; //Lista dos produtos do menu
+    private List<Table> Tables;
+    private List<Order> Orders;
+    private List<Item> MenuItems; //Lista dos produtos do menu
     public event AlterDelegate alterEvent;
 
     public OrdersList()
@@ -24,7 +24,7 @@ public class OrdersList : MarshalByRefObject, IOrdersList
         };
     }
 
-    public IList<Item> getMenuItems() { return MenuItems; }
+    public List<Item> getMenuItems() { return MenuItems; }
 
     public bool addOrder(int tableID, int itemId, int quantity)
     {
@@ -41,7 +41,15 @@ public class OrdersList : MarshalByRefObject, IOrdersList
         return true;
     }
 
-    public IList<Order> getOrders() { return Orders; }
+    public List<Order> getOrders() { return Orders; }
+
+    public void changeOrderStatus(Order o, OrderStatus newOS)
+    {
+        int i = Orders.FindIndex(x => x.Id == o.Id);
+        Orders[i].Status = newOS;
+
+        NotifyClients(Operation.Change, Orders[i]);
+    }
 
     public void consultTable(int id)
     {
@@ -103,4 +111,5 @@ public class OrdersList : MarshalByRefObject, IOrdersList
             }
         }
     }
+
 }
