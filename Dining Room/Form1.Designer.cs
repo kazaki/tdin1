@@ -80,8 +80,9 @@ namespace Dining_Room
             // 
             // nudQuantity
             // 
+            this.nudQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudQuantity.Location = new System.Drawing.Point(427, 38);
+            this.nudQuantity.Location = new System.Drawing.Point(427, 37);
             this.nudQuantity.Maximum = new decimal(new int[] {
             99,
             0,
@@ -103,6 +104,8 @@ namespace Dining_Room
             // 
             // cbMenu
             // 
+            this.cbMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbMenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMenu.FormattingEnabled = true;
@@ -133,9 +136,10 @@ namespace Dining_Room
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(422, 10);
+            this.label3.Location = new System.Drawing.Point(427, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 25);
             this.label3.TabIndex = 5;
@@ -143,6 +147,7 @@ namespace Dining_Room
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(516, 37);
             this.button1.Name = "button1";
