@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+public enum OrderType { Bar, Kitchen };
+public enum OrderStatus { Pending, Prepararion, Ready };
+public enum Operation { New, Change };
 
 [Serializable]
 public class Table
@@ -31,14 +32,12 @@ public class Table
 [Serializable]
 public class Order
 {
-    public const int BAR = 0, KITCHEN = 1, PENDING = 0, PREPERATION = 1, READY = 2;
-
     private static int LastId = 0;
     public int Id { get; }
     public Item Item { get; set; }
     public int Quantity { get; set; }
     public Table Table { get; set; }
-    public int Status { get; set; } // 0 - Pending, 1 - Preparation, 2 - Ready
+    public OrderStatus Status { get; set; } // 0 - Pending, 1 - Preparation, 2 - Ready
 
     public Order(Item item, int quantity, Table table)
     {
@@ -46,23 +45,12 @@ public class Order
         Item = item;
         Quantity = quantity;
         Table = table;
-        Status = 0;
+        Status = OrderStatus.Pending;
     }
 
-    public string getStatus()
-    {
-        switch (Status)
-        {
-            case 0:
-                return "Pending";
-            case 1:
-                return "Preparation";
-            case 2:
-                return "Ready";
-            default:
-                return "";
-        }
-    }
+    /* Estes 2 métodos foram necessários, por a classe Order ser um "objeto complexo", para mostrar os dados fazendo binding da classe Order nos dataGridView */
+    public string StringItem { get { return Item.Name; } }
+    public string StringTable { get { return (Table.Id + 1).ToString(); } }
 
 }
 
@@ -72,9 +60,9 @@ public class Item
     public int Id { get; }
     public string Name { get; }
     public decimal Price { get; }
-    public int Type { get; }
+    public OrderType Type { get; }
 
-    public Item(int id, string name, decimal price, int type)
+    public Item(int id, string name, decimal price, OrderType type)
     {
         this.Id = id;
         this.Name = name;
@@ -83,7 +71,6 @@ public class Item
     }
 }
 
-public enum Operation { New, Change };
 public delegate void AlterDelegate(Operation op, Order order);
 
 public interface IOrdersList
@@ -92,11 +79,13 @@ public interface IOrdersList
 
     IList<Item> getMenuItems();
     bool addOrder(int tableID, int itemId, int quantity);
+    IList<Order> getOrders();
     void consultTable(int id);
     void printTables();
     void printOrders();
 }
 
+/* Classe para subscrição dos eventos */
 public class AlterEventRepeater : MarshalByRefObject
 {
     public event AlterDelegate alterEvent;

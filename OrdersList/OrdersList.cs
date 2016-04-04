@@ -15,12 +15,12 @@ public class OrdersList : MarshalByRefObject, IOrdersList
         Tables = new List<Table> { new Table(), new Table(), new Table(), new Table(), new Table(), new Table() };
         Orders = new List<Order> { };
         MenuItems = new List<Item> {
-            new Item(0, "Sandes de Fiambre", 2.5m , Order.BAR),
-            new Item(1, "Sumo de Laranja", 2.5m , Order.BAR),
-            new Item(2, "Tosta Mista", 2.5m , Order.BAR),
-            new Item(3, "Omelete Mista", 2.5m , Order.KITCHEN),
-            new Item(4, "Prego no Prato", 2.5m , Order.KITCHEN),
-            new Item(5, "Filetes de Pescada", 2.5m , Order.KITCHEN),
+            new Item(0, "Sandes de Fiambre", 2.5m , OrderType.Bar),
+            new Item(1, "Sumo de Laranja", 2.5m , OrderType.Bar),
+            new Item(2, "Tosta Mista", 2.5m , OrderType.Bar),
+            new Item(3, "Omelete Mista", 2.5m , OrderType.Kitchen),
+            new Item(4, "Prego no Prato", 2.5m , OrderType.Kitchen),
+            new Item(5, "Filetes de Pescada", 2.5m , OrderType.Kitchen),
         };
     }
 
@@ -37,9 +37,11 @@ public class OrdersList : MarshalByRefObject, IOrdersList
         tbl.Occupied = true;
 
         NotifyClients(Operation.New, Orders.Last());
-        Console.WriteLine("<NEW ORDER ACCEPTED>\n" + Orders.Count);
+        Console.WriteLine("<NEW ORDER ACCEPTED>\n");
         return true;
     }
+
+    public IList<Order> getOrders() { return Orders; }
 
     public void consultTable(int id)
     {
@@ -84,7 +86,7 @@ public class OrdersList : MarshalByRefObject, IOrdersList
         if (alterEvent != null)
         {
             Delegate[] invkList = alterEvent.GetInvocationList();
-            
+
             foreach (AlterDelegate handler in invkList)
             {
                 new Thread(() =>

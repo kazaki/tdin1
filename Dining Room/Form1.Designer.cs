@@ -168,6 +168,9 @@ namespace Dining_Room
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -175,13 +178,13 @@ namespace Dining_Room
             this.ColumnItem,
             this.ColumnQuantity,
             this.ColumnStatus});
-            this.dataGridView1.Location = new System.Drawing.Point(17, 127);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 126);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(621, 109);
+            this.dataGridView1.Size = new System.Drawing.Size(621, 123);
             this.dataGridView1.TabIndex = 9;
             // 
             // ColumnTable
@@ -246,12 +249,36 @@ namespace Dining_Room
             this.cbTable.SelectedIndex = 0;
 
             /*CB dos menus*/
-            IList<Item> items = orderManager.getMenuItems();
+            IList<Item> items = new List<Item> { };
+            try
+            {
+                items = orderManager.getMenuItems();
+            }
+
+            catch (System.Exception) { }
             this.cbMenu.DataSource = items;
             this.cbMenu.DisplayMember = "Name";
             this.cbMenu.ValueMember = "Id";
-            this.cbMenu.SelectedIndex = 0;
 
+
+            /*Preenxe a lista de pedidos com os pedidos existentes*/
+            IList<Order> orders = new List<Order> { };
+            try
+            {
+                orders = orderManager.getOrders(); //Obtem todas as encomendas que já estejam no server
+            }
+            catch (System.Exception) { }
+
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.DataSource = bsOrders;
+            dataGridView1.Columns[0].DataPropertyName = "StringTable";
+            dataGridView1.Columns[1].DataPropertyName = "StringItem";
+            dataGridView1.Columns[2].DataPropertyName = "Quantity";
+            dataGridView1.Columns[3].DataPropertyName = "Status";
+            foreach (Order order in orders)
+            {
+                this.UpdateTabelaOrders(order);
+            }
         }
 
 
