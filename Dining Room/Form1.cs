@@ -53,10 +53,13 @@ namespace Dining_Room
                         switch (order.Status)
                         {
                             case OrderStatus.Prepararion:
-                                row.DefaultCellStyle.BackColor = System.Drawing.Color.Blue;
+                                row.DefaultCellStyle.BackColor = System.Drawing.Color.Orange;
                                 break;
                             case OrderStatus.Ready:
                                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LawnGreen;
+                                break;
+                            case OrderStatus.Delivered:
+                                bsOrders.Remove(order);
                                 break;
                         }
                         break;
@@ -73,13 +76,38 @@ namespace Dining_Room
             {
                 try
                 {
-                    orderManager.addOrder(cbTable.SelectedIndex, (Int32)cbMenu.SelectedValue, Decimal.ToInt32(nudQuantity.Value));
+                    int result = orderManager.addOrder(cbTable.SelectedIndex, (Int32)cbMenu.SelectedValue, Decimal.ToInt32(nudQuantity.Value));
+                    if (result == 1) MessageBox.Show("Unable to add order. The table is in payment process.");
+                    else if(result == 2) MessageBox.Show("Unable to add order. Table is not ocupied.");
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Sorry, an error occurred adding your order.");
                 }
             }
+        }
+
+        private void btClearOrder_Click(object sender, EventArgs e)
+        {
+            Order o;
+            Int32 selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount > 0)
+            {
+                for (int i = 0; i < selectedRowCount; i++)
+                {
+                    o = (Order)dataGridView1.SelectedRows[i].DataBoundItem;
+                    if (o.Status == OrderStatus.Ready)
+                    {
+                        orderManager.changeOrderStatus(o, OrderStatus.Delivered);
+                    }
+                    else if (o.Status == OrderStatus.Pending)
+                    {
+                        orderManager.deleteOrder(o);
+                    }
+                }
+            }
+            
+
         }
 
         /* Desubscreve os eventos porque o programa fechou */
@@ -92,30 +120,7 @@ namespace Dining_Room
             }
             catch (Exception) { }
         }
+
     }
-
-    /* Mechanism for instanciating a remote object through its interface, using the config file */
-    class RemoteNew
-    {
-        private static Hashtable types = null;
-
-        private static void InitTypeTable()
-        {
-            types = new Hashtable();
-            foreach (WellKnownClientTypeEntry entry in RemotingConfiguration.GetRegisteredWellKnownClientTypes())
-                types.Add(entry.ObjectType, entry);
-        }
-
-        public static object New(Type type)
-        {
-            if (types == null)
-                InitTypeTable();
-            WellKnownClientTypeEntry entry = (WellKnownClientTypeEntry)types[type];
-            if (entry == null)
-                throw new RemotingException("Type not found!");
-            return RemotingServices.Connect(type, entry.ObjectUrl);
-        }
-    }
-
 
 }

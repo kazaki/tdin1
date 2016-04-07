@@ -61,7 +61,7 @@ namespace Bar___Kitchen
                 int i = bsOrders.IndexOf(order);
                 if (i > -1)
                 {
-                    if (order.Status == OrderStatus.Ready) bsOrders.RemoveAt(i);
+                    if (order.Status >= OrderStatus.Ready) bsOrders.RemoveAt(i);
                     else bsOrders[i] = order;
                 }
             }
@@ -116,29 +116,6 @@ namespace Bar___Kitchen
             catch (Exception) { }
         }
 
-    }
-
-    /* Mechanism for instanciating a remote object through its interface, using the config file */
-    class RemoteNew
-    {
-        private static Hashtable types = null;
-
-        private static void InitTypeTable()
-        {
-            types = new Hashtable();
-            foreach (WellKnownClientTypeEntry entry in RemotingConfiguration.GetRegisteredWellKnownClientTypes())
-                types.Add(entry.ObjectType, entry);
-        }
-
-        public static object New(Type type)
-        {
-            if (types == null)
-                InitTypeTable();
-            WellKnownClientTypeEntry entry = (WellKnownClientTypeEntry)types[type];
-            if (entry == null)
-                throw new RemotingException("Type not found!");
-            return RemotingServices.Connect(type, entry.ObjectUrl);
-        }
     }
 
 }

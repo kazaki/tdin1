@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting;
 
 public enum OrderType { Bar, Kitchen };
-public enum OrderStatus { Pending, Prepararion, Ready };
+public enum OrderStatus { Pending, Prepararion, Ready, Delivered };
 public enum Operation { New, Change };
 
 [Serializable]
@@ -13,11 +15,13 @@ public class Table
     public int Id { get; }
     public bool Occupied { get; set; }
     public IList<Order> Orders { get; set; }
+    public bool AllowOrders { get; set; }
 
     public Table()
     {
         Id = LastId++;
         Occupied = false;
+        AllowOrders = true;
         Orders = new List<Order> { };
     }
 
@@ -58,6 +62,7 @@ public class Order
     public string StringItem { get { return Item.Name; } }
     public string StringTable { get { return (Table.Id + 1).ToString(); } }
     public OrderStatus NextStatus { get { if (Status < OrderStatus.Ready) return Status + 1; else return OrderStatus.Ready; } }
+    public String NextStatusBt { get { if (Status < OrderStatus.Ready) return "> " + (Status + 1); else return OrderStatus.Ready.ToString(); } }
 
 }
 
@@ -84,13 +89,18 @@ public interface IOrdersList
 {
     event AlterDelegate alterEvent;
 
+    void connect();
     List<Item> getMenuItems();
-    bool addOrder(int tableID, int itemId, int quantity);
+    int addOrder(int tableID, int itemId, int quantity);
     List<Order> getOrders();
     void changeOrderStatus(Order o, OrderStatus newOS);
+    void deleteOrder(Order o);
     void consultTable(int id);
     void printTables();
     void printOrders();
+    void assignTable(int id);
+    bool payTable(int id);
+    bool requestBill(int id);
 }
 
 /* Classe para subscrição dos eventos */
@@ -101,4 +111,27 @@ public class AlterEventRepeater : MarshalByRefObject
     public override object InitializeLifetimeService() { return null; }
 
     public void Repeater(Operation op, Order order) { if (alterEvent != null) alterEvent(op, order); }
+}
+
+/* Mechanism for instanciating a remote object through its interface, using the config file */
+public class RemoteNew
+{
+    private static Hashtable types = null;
+
+    private static void InitTypeTable()
+    {
+        types = new Hashtable();
+        foreach (WellKnownClientTypeEntry entry in RemotingConfiguration.GetRegisteredWellKnownClientTypes())
+            types.Add(entry.ObjectType, entry);
+    }
+
+    public static object New(Type type)
+    {
+        if (types == null)
+            InitTypeTable();
+        WellKnownClientTypeEntry entry = (WellKnownClientTypeEntry)types[type];
+        if (entry == null)
+            throw new RemotingException("Type not found!");
+        return RemotingServices.Connect(type, entry.ObjectUrl);
+    }
 }

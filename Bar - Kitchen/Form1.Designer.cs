@@ -65,7 +65,7 @@ namespace Bar___Kitchen
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(784, 425);
+            this.dataGridView1.Size = new System.Drawing.Size(993, 425);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -117,7 +117,7 @@ namespace Bar___Kitchen
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -173,7 +173,7 @@ namespace Bar___Kitchen
             dataGridView1.Columns[0].DataPropertyName = "Quantity";
             dataGridView1.Columns[1].DataPropertyName = "StringItem";
             dataGridView1.Columns[2].DataPropertyName = "Status";
-            dataGridView1.Columns[3].DataPropertyName = "NextStatus";
+            dataGridView1.Columns[3].DataPropertyName = "NextStatusBt";
             foreach (Order order in orders)
             {
                 this.UpdateTabelaOrders(order, Operation.New);

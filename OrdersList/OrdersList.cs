@@ -22,23 +22,27 @@ public class OrdersList : MarshalByRefObject, IOrdersList
             new Item(4, "Prego no Prato", 2.5m , OrderType.Kitchen),
             new Item(5, "Filetes de Pescada", 2.5m , OrderType.Kitchen),
         };
+        Console.WriteLine("Printer output:\n");
     }
+
+    public void connect() { }
 
     public List<Item> getMenuItems() { return MenuItems; }
 
-    public bool addOrder(int tableID, int itemId, int quantity)
+    public int addOrder(int tableID, int itemId, int quantity)
     {
-        Console.WriteLine("[NEW ORDER] (" + MenuItems[itemId].Name + " | " + quantity + " | " + tableID + " | " + MenuItems[itemId].Type + " | " + MenuItems[itemId].Price + ")");
-
         Table tbl = Tables.ElementAt(tableID);
+        if (!Tables[tableID].AllowOrders) return 1;
+        if (!tbl.Occupied) return 2;
 
-        Orders.Add(new Order(MenuItems[itemId], quantity, tbl));
-        tbl.Orders.Add(Orders.Last());
-        tbl.Occupied = true;
+        //Console.WriteLine("[NEW ORDER] (" + MenuItems[itemId].Name + " | " + quantity + " | " + tableID + " | " + MenuItems[itemId].Type + " | " + MenuItems[itemId].Price + ")");
+
+        tbl.Orders.Add(new Order(MenuItems[itemId], quantity, tbl));
+        Orders.Add(tbl.Orders.Last());
 
         NotifyClients(Operation.New, Orders.Last());
-        Console.WriteLine("<NEW ORDER ACCEPTED>\n");
-        return true;
+        //Console.WriteLine("<NEW ORDER ACCEPTED>\n");
+        return 0;
     }
 
     public List<Order> getOrders() { return Orders; }
@@ -49,6 +53,14 @@ public class OrdersList : MarshalByRefObject, IOrdersList
         Orders[i].Status = newOS;
 
         NotifyClients(Operation.Change, Orders[i]);
+    }
+
+    public void deleteOrder(Order o)
+    {
+        o.Status = OrderStatus.Delivered;
+        NotifyClients(Operation.Change, o);
+        Tables[o.Table.Id].Orders.Remove(o);
+        Orders.Remove(o);
     }
 
     public void consultTable(int id)
@@ -87,6 +99,55 @@ public class OrdersList : MarshalByRefObject, IOrdersList
             Console.WriteLine();
         }
     }
+
+    public void assignTable(int id)
+    {
+        Tables[id].Occupied = true;
+    }
+
+    public bool requestBill(int id)
+    {
+        if (!Tables[id].Occupied) return false;
+        Tables[id].AllowOrders = false;
+
+        List<Order> lo = new List<Order>();
+
+        foreach (Order o in Tables[id].Orders)
+        {
+            if (o.Status == OrderStatus.Pending)
+            {
+                lo.Add(o);
+                o.Status = OrderStatus.Delivered;
+                NotifyClients(Operation.Change, o);
+            }
+        }
+
+        foreach (Order o in lo)
+        {
+            Tables[id].Orders.Remove(o);
+            Orders.Remove(o);
+        }
+
+        consultTable(id);
+
+        return true;
+    }
+
+    public bool payTable(int id)
+    {
+        if (!Tables[id].Occupied || Tables[id].AllowOrders) return false;
+        Tables[id].Occupied = false;
+        Tables[id].AllowOrders = true;
+
+        for(int i=0; i< Orders.Count; i++)
+        {
+            if(Orders[i].Table.Id == id) Orders.RemoveAt(i);
+        }
+        Tables[id].Orders.Clear();
+
+        return true;
+    }
+
 
     /* Notifica os clientes que subscreveram o evento das novas orders */
     void NotifyClients(Operation op, Order order)

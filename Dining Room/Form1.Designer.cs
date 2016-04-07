@@ -64,6 +64,7 @@ namespace Dining_Room
             this.ColumnItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btClearOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -217,11 +218,22 @@ namespace Dining_Room
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
             // 
+            // btClearOrder
+            // 
+            this.btClearOrder.Location = new System.Drawing.Point(516, 97);
+            this.btClearOrder.Name = "btClearOrder";
+            this.btClearOrder.Size = new System.Drawing.Size(122, 23);
+            this.btClearOrder.TabIndex = 10;
+            this.btClearOrder.Text = "Clear Orders";
+            this.btClearOrder.UseVisualStyleBackColor = true;
+            this.btClearOrder.Click += new System.EventHandler(this.btClearOrder_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 261);
+            this.Controls.Add(this.btClearOrder);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
@@ -303,6 +315,7 @@ namespace Dining_Room
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
+        private System.Windows.Forms.Button btClearOrder;
     }
 }
 

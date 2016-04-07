@@ -15,7 +15,7 @@ namespace Server
             RemotingConfiguration.Configure("Server.exe.config", false);
 
             //Obtem o obj do server
-            OrdersList orderManager = (OrdersList)Activator.GetObject(typeof(OrdersList), "tcp://localhost:9000/Server/RestaurantServer");
+            /*OrdersList orderManager = (OrdersList)Activator.GetObject(typeof(OrdersList), "tcp://localhost:9000/Server/RestaurantServer");
 
             orderManager.printTables();
             Console.ReadLine();
@@ -26,7 +26,7 @@ namespace Server
             orderManager.printTables();
             Console.ReadLine();
 
-            orderManager.consultTable(0);
+            orderManager.consultTable(0);*/
             Console.ReadLine();
 
         }
