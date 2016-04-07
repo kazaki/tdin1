@@ -1,8 +1,0 @@
-c:\users\pedro\documents\visual studio 2015\Projects\tdin1\tdin1\bin\Debug\tdin1.exe.config
-c:\users\pedro\documents\visual studio 2015\Projects\tdin1\tdin1\bin\Debug\tdin1.exe
-c:\users\pedro\documents\visual studio 2015\Projects\tdin1\tdin1\bin\Debug\tdin1.pdb
-c:\users\pedro\documents\visual studio 2015\Projects\tdin1\tdin1\obj\Debug\Caixa.csprojResolveAssemblyReference.cache
-c:\users\pedro\documents\visual studio 2015\Projects\tdin1\tdin1\obj\Debug\tdin1.Properties.Resources.resources
-c:\users\pedro\documents\visual studio 2015\Projects\tdin1\tdin1\obj\Debug\Caixa.csproj.GenerateResource.Cache
-c:\users\pedro\documents\visual studio 2015\Projects\tdin1\tdin1\obj\Debug\tdin1.exe
-c:\users\pedro\documents\visual studio 2015\Projects\tdin1\tdin1\obj\Debug\tdin1.pdb
