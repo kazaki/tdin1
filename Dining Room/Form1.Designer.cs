@@ -60,11 +60,12 @@ namespace Dining_Room
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btClearOrder = new System.Windows.Forms.Button();
             this.ColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btClearOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +76,7 @@ namespace Dining_Room
             this.cbTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTable.FormattingEnabled = true;
             this.cbTable.Location = new System.Drawing.Point(16, 46);
-            this.cbTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTable.Margin = new System.Windows.Forms.Padding(4);
             this.cbTable.Name = "cbTable";
             this.cbTable.Size = new System.Drawing.Size(160, 33);
             this.cbTable.TabIndex = 0;
@@ -85,7 +86,7 @@ namespace Dining_Room
             this.nudQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudQuantity.Location = new System.Drawing.Point(569, 46);
-            this.nudQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.nudQuantity.Maximum = new decimal(new int[] {
             99,
             0,
@@ -113,7 +114,7 @@ namespace Dining_Room
             this.cbMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMenu.FormattingEnabled = true;
             this.cbMenu.Location = new System.Drawing.Point(185, 46);
-            this.cbMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMenu.Margin = new System.Windows.Forms.Padding(4);
             this.cbMenu.Name = "cbMenu";
             this.cbMenu.Size = new System.Drawing.Size(375, 33);
             this.cbMenu.TabIndex = 2;
@@ -157,7 +158,7 @@ namespace Dining_Room
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(688, 46);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(163, 39);
             this.button1.TabIndex = 6;
@@ -191,15 +192,27 @@ namespace Dining_Room
             this.ColumnTable,
             this.ColumnItem,
             this.ColumnQuantity,
+            this.ColumnType,
             this.ColumnStatus});
             this.dataGridView1.Location = new System.Drawing.Point(23, 155);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(828, 151);
             this.dataGridView1.TabIndex = 9;
+            // 
+            // btClearOrder
+            // 
+            this.btClearOrder.Location = new System.Drawing.Point(688, 119);
+            this.btClearOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.btClearOrder.Name = "btClearOrder";
+            this.btClearOrder.Size = new System.Drawing.Size(163, 28);
+            this.btClearOrder.TabIndex = 10;
+            this.btClearOrder.Text = "Clear Orders";
+            this.btClearOrder.UseVisualStyleBackColor = true;
+            this.btClearOrder.Click += new System.EventHandler(this.btClearOrder_Click);
             // 
             // ColumnTable
             // 
@@ -220,22 +233,17 @@ namespace Dining_Room
             this.ColumnQuantity.Name = "ColumnQuantity";
             this.ColumnQuantity.ReadOnly = true;
             // 
+            // ColumnType
+            // 
+            this.ColumnType.HeaderText = "Type";
+            this.ColumnType.Name = "ColumnType";
+            this.ColumnType.ReadOnly = true;
+            // 
             // ColumnStatus
             // 
             this.ColumnStatus.HeaderText = "Status";
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
-            // 
-            // btClearOrder
-            // 
-            this.btClearOrder.Location = new System.Drawing.Point(688, 119);
-            this.btClearOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btClearOrder.Name = "btClearOrder";
-            this.btClearOrder.Size = new System.Drawing.Size(163, 28);
-            this.btClearOrder.TabIndex = 10;
-            this.btClearOrder.Text = "Clear Orders";
-            this.btClearOrder.UseVisualStyleBackColor = true;
-            this.btClearOrder.Click += new System.EventHandler(this.btClearOrder_Click);
             // 
             // Form1
             // 
@@ -253,7 +261,7 @@ namespace Dining_Room
             this.Controls.Add(this.nudQuantity);
             this.Controls.Add(this.cbTable);
             this.Location = new System.Drawing.Point(800, 100);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "POS: Dinning Room";
@@ -303,7 +311,8 @@ namespace Dining_Room
             dataGridView1.Columns[0].DataPropertyName = "StringTable";
             dataGridView1.Columns[1].DataPropertyName = "StringItem";
             dataGridView1.Columns[2].DataPropertyName = "Quantity";
-            dataGridView1.Columns[3].DataPropertyName = "Status";
+            dataGridView1.Columns[3].DataPropertyName = "StringType";
+            dataGridView1.Columns[4].DataPropertyName = "Status";
             foreach (Order order in orders)
             {
                 this.UpdateTabelaOrders(order, Operation.New);
@@ -323,11 +332,12 @@ namespace Dining_Room
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btClearOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
-        private System.Windows.Forms.Button btClearOrder;
     }
 }
 

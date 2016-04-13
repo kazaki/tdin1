@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Reception.Properties
+namespace POS.Properties
 {
 
 

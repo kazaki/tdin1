@@ -61,6 +61,7 @@ public class Order
     /* Estes 2 métodos foram necessários, por a classe Order ser um "objeto complexo", para mostrar os dados fazendo binding da classe Order nos dataGridView */
     public string StringItem { get { return Item.Name; } }
     public string StringTable { get { return (Table.Id + 1).ToString(); } }
+    public string StringType { get { return Item.Type.ToString(); } }
     public OrderStatus NextStatus { get { if (Status < OrderStatus.Ready) return Status + 1; else return OrderStatus.Ready; } }
     public String NextStatusBt { get { if (Status < OrderStatus.Ready) return "> " + (Status + 1); else return OrderStatus.Ready.ToString(); } }
 
