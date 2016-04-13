@@ -1,0 +1,12 @@
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\bin\Release\Bar - Kitchen.exe.config
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\bin\Release\Bar - Kitchen.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\bin\Release\Bar - Kitchen.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\bin\Release\Common.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\bin\Release\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\obj\Release\Bar - Kitchen.csprojResolveAssemblyReference.cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\obj\Release\Bar___Kitchen.DlgOptions.resources
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\obj\Release\Bar___Kitchen.Form1.resources
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\obj\Release\Bar___Kitchen.Properties.Resources.resources
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\obj\Release\Bar - Kitchen.csproj.GenerateResource.Cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\obj\Release\Bar - Kitchen.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Bar - Kitchen\obj\Release\Bar - Kitchen.pdb

@@ -1,0 +1,7 @@
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\OrdersList\bin\Release\OrdersList.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\OrdersList\bin\Release\OrdersList.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\OrdersList\bin\Release\Common.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\OrdersList\bin\Release\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\OrdersList\obj\Release\OrdersList.csprojResolveAssemblyReference.cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\OrdersList\obj\Release\OrdersList.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\OrdersList\obj\Release\OrdersList.pdb

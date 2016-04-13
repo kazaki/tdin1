@@ -1,0 +1,11 @@
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\bin\Release\Common.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\bin\Release\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\obj\Release\Reception.csprojResolveAssemblyReference.cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\obj\Release\POS.Form1.resources
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\obj\Release\POS.Properties.Resources.resources
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\obj\Release\Reception.csproj.GenerateResource.Cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\bin\Release\Reception.exe.config
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\bin\Release\Reception.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\bin\Release\Reception.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\obj\Release\Reception.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Reception\obj\Release\Reception.pdb

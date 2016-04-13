@@ -1,0 +1,10 @@
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Release\Server.exe.config
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Release\Server.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Release\Server.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Release\Common.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Release\OrdersList.dll
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Release\Common.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\bin\Release\OrdersList.pdb
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\obj\Release\Server.csprojResolveAssemblyReference.cache
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\obj\Release\Server.exe
+C:\Users\Telmo\Documents\Visual Studio 2015\Projects\TDINTP1\TDINTP1\Server\obj\Release\Server.pdb

@@ -11,7 +11,7 @@ namespace POS
 
         public Form1()
         {
-            RemotingConfiguration.Configure("POS.exe.config", false);
+            RemotingConfiguration.Configure("Reception.exe.config", false);
             InitializeComponent();  
             orderManager = (IOrdersList)RemoteNew.New(typeof(IOrdersList));
             orderManager.connect();
