@@ -164,7 +164,8 @@ namespace Bar___Kitchen
             IList<Order> orders = new List<Order> { };
             try
             {
-                orders = orderManager.getOrders(); //Obtem todas as encomendas que já estejam no server
+                if (myType == OrderType.Bar) orders = orderManager.getOrdersBar(); //Obtem todas as encomendas que já estejam no server
+                else if (myType == OrderType.Kitchen) orders = orderManager.getOrdersKitchen(); //Obtem todas as encomendas que já estejam no server
             }
             catch (System.Exception) { }
 

@@ -84,15 +84,21 @@ public class Item
 }
 
 public delegate void AlterDelegate(Operation op, Order order);
+public delegate void AlterDelegateBar(Operation op, Order order);
+public delegate void AlterDelegateKitchen(Operation op, Order order);
 
 public interface IOrdersList
 {
     event AlterDelegate alterEvent;
+    event AlterDelegateBar alterEventBar;
+    event AlterDelegateKitchen alterEventKitchen;
 
     void connect();
     List<Item> getMenuItems();
     int addOrder(int tableID, int itemId, int quantity);
     List<Order> getOrders();
+    List<Order> getOrdersBar();
+    List<Order> getOrdersKitchen();
     void changeOrderStatus(Order o, OrderStatus newOS);
     void deleteOrder(Order o);
     void consultTable(int id);
@@ -107,10 +113,14 @@ public interface IOrdersList
 public class AlterEventRepeater : MarshalByRefObject
 {
     public event AlterDelegate alterEvent;
+    public event AlterDelegateBar alterEventBar;
+    public event AlterDelegateKitchen alterEventKitchen;
 
     public override object InitializeLifetimeService() { return null; }
 
     public void Repeater(Operation op, Order order) { if (alterEvent != null) alterEvent(op, order); }
+    public void RepeaterBar(Operation op, Order order) { if (alterEventBar != null) alterEventBar(op, order); }
+    public void RepeaterKitchen(Operation op, Order order) { if (alterEventKitchen != null) alterEventKitchen(op, order); }
 }
 
 /* Mechanism for instanciating a remote object through its interface, using the config file */

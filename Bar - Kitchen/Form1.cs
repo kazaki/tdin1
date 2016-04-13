@@ -37,10 +37,17 @@ namespace Bar___Kitchen
             toolStripStatusLabel1.Text = "Your Profile: " + this.myType.ToString();
             customInitialize();
 
-            /*Inicia o subscritor dos eventos e subescreve-os */
+            /*Inicia o subscritor dos eventos e subescreve-os deprendendo do tipo (bar/kitchen) */
             evRepeater = new AlterEventRepeater();
-            evRepeater.alterEvent += new AlterDelegate(DoAlterations);
-            orderManager.alterEvent += new AlterDelegate(evRepeater.Repeater);
+            if (myType == OrderType.Bar)
+            {
+                evRepeater.alterEventBar += new AlterDelegateBar(DoAlterations);
+                orderManager.alterEventBar += new AlterDelegateBar(evRepeater.RepeaterBar);
+            }
+            else {
+                evRepeater.alterEventKitchen += new AlterDelegateKitchen(DoAlterations);
+                orderManager.alterEventKitchen += new AlterDelegateKitchen(evRepeater.RepeaterKitchen);
+            }
         }
 
         /* Chamado após evento subscrito de alteração */
@@ -54,7 +61,7 @@ namespace Bar___Kitchen
         {
             if (op == Operation.New)
             {
-                if (order.Item.Type == myType && order.Status != OrderStatus.Ready) bsOrders.Add(order);
+                if (order.Status != OrderStatus.Ready) bsOrders.Add(order);
             }
             else if (op == Operation.Change)
             {
@@ -92,11 +99,29 @@ namespace Bar___Kitchen
                     this.myType = dlg.type;
                     this.Text = "POS: " + this.myType.ToString();
                     toolStripStatusLabel1.Text = "Your Profile: " + this.myType.ToString();
+
+                    /* Desubscreve eventos do estado anterior e subscreve os novos */
+                    if (myType == OrderType.Bar)
+                    {
+                        orderManager.alterEventKitchen -= new AlterDelegateKitchen(evRepeater.RepeaterKitchen);
+                        evRepeater.alterEventKitchen -= new AlterDelegateKitchen(DoAlterations);
+                        evRepeater.alterEventBar += new AlterDelegateBar(DoAlterations);
+                        orderManager.alterEventBar += new AlterDelegateBar(evRepeater.RepeaterBar);
+                    }
+                    else {
+                        orderManager.alterEventBar -= new AlterDelegateBar(evRepeater.RepeaterBar);
+                        evRepeater.alterEventBar -= new AlterDelegateBar(DoAlterations);
+                        evRepeater.alterEventKitchen += new AlterDelegateKitchen(DoAlterations);
+                        orderManager.alterEventKitchen += new AlterDelegateKitchen(evRepeater.RepeaterKitchen);
+                    }
+
+                    /* Trata da tabela */
                     bsOrders.Clear();
                     IList<Order> orders = new List<Order> { };
                     try
                     {
-                        orders = orderManager.getOrders(); //Obtem todas as encomendas que já estejam no server
+                        if (myType == OrderType.Bar) orders = orderManager.getOrdersBar(); //Obtem todas as encomendas que já estejam no server
+                        else if (myType == OrderType.Kitchen) orders = orderManager.getOrdersKitchen(); //Obtem todas as encomendas que já estejam no server
                     }
                     catch { }
                     foreach (Order order in orders) this.UpdateTabelaOrders(order, Operation.New);
@@ -110,8 +135,15 @@ namespace Bar___Kitchen
         {
             try
             {
-                orderManager.alterEvent -= new AlterDelegate(evRepeater.Repeater);
-                evRepeater.alterEvent -= new AlterDelegate(DoAlterations);
+                if (myType == OrderType.Kitchen)
+                {
+                    orderManager.alterEventKitchen -= new AlterDelegateKitchen(evRepeater.RepeaterKitchen);
+                    evRepeater.alterEventKitchen -= new AlterDelegateKitchen(DoAlterations);
+                }
+                else {
+                    orderManager.alterEventBar -= new AlterDelegateBar(evRepeater.RepeaterBar);
+                    evRepeater.alterEventBar -= new AlterDelegateBar(DoAlterations);
+                }
             }
             catch (Exception) { }
         }

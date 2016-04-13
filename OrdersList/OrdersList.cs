@@ -9,6 +9,8 @@ public class OrdersList : MarshalByRefObject, IOrdersList
     private List<Order> Orders;
     private List<Item> MenuItems; //Lista dos produtos do menu
     public event AlterDelegate alterEvent;
+    public event AlterDelegateBar alterEventBar;
+    public event AlterDelegateKitchen alterEventKitchen;
 
     public OrdersList()
     {
@@ -46,6 +48,25 @@ public class OrdersList : MarshalByRefObject, IOrdersList
     }
 
     public List<Order> getOrders() { return Orders; }
+
+    public List<Order> getOrdersBar() {
+        List<Order> BarOrders = new List<Order> { };
+
+        foreach(Order o in Orders)
+            if (o.Item.Type == OrderType.Bar) BarOrders.Add(o);
+
+        return BarOrders;
+    }
+
+    public List<Order> getOrdersKitchen()
+    {
+        List<Order> KitchenOrders = new List<Order> { };
+
+        foreach (Order o in Orders)
+            if (o.Item.Type == OrderType.Kitchen) KitchenOrders.Add(o);
+
+        return KitchenOrders;
+    }
 
     public void changeOrderStatus(Order o, OrderStatus newOS)
     {
@@ -171,6 +192,51 @@ public class OrdersList : MarshalByRefObject, IOrdersList
                 }).Start();
             }
         }
+        if(order.Item.Type == OrderType.Bar)
+        {
+            if (alterEventBar != null)
+            {
+                Delegate[] invkList = alterEventBar.GetInvocationList();
+
+                foreach (AlterDelegateBar handler in invkList)
+                {
+                    new Thread(() =>
+                    {
+                        try
+                        {
+                            handler(op, order); //Invoking event handler
+                        }
+                        catch (Exception)
+                        {
+                            alterEventBar -= handler; //Exception: Removed an event handler
+                        }
+                    }).Start();
+                }
+            }
+        }
+        else if (order.Item.Type == OrderType.Kitchen)
+        {
+            if (alterEventKitchen != null)
+            {
+                Delegate[] invkList = alterEventKitchen.GetInvocationList();
+
+                foreach (AlterDelegateKitchen handler in invkList)
+                {
+                    new Thread(() =>
+                    {
+                        try
+                        {
+                            handler(op, order); //Invoking event handler
+                        }
+                        catch (Exception)
+                        {
+                            alterEventKitchen -= handler; //Exception: Removed an event handler
+                        }
+                    }).Start();
+                }
+            }
+        }
+
     }
 
 }
