@@ -30,7 +30,7 @@ namespace POS
             if (lastChecked != null)
             {
                 orderManager.assignTable(Int32.Parse(lastChecked.Text) - 1);
-                lastChecked.BackColor = System.Drawing.Color.Blue;
+                lastChecked.BackColor = System.Drawing.Color.LightBlue;
             }
             else MessageBox.Show("Please select a table.");
         }

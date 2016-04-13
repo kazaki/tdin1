@@ -87,11 +87,14 @@ public class OrdersList : MarshalByRefObject, IOrdersList
     public void consultTable(int id)
     {
         Table tbl = Tables.ElementAt(id);
-        Console.WriteLine("[Table " + id + "'s orders] " + tbl.getTotalPrice() + " euro(s)");
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Table " + (id+1));
+        int i = 0;
         foreach (Order o in tbl.Orders)
         {
-            Console.WriteLine("[" + o.Id + "] (" + o.Item.Name + " | " + o.Quantity + " | " + o.Item.Type + ") " + o.Item.Price + " euro(s)");
+            Console.WriteLine("[" + ++i + "] " + o.Item.Name + "\t\t" + o.Item.Price + " euro(s)" + "  x" + o.Quantity );
         }
+        Console.WriteLine("Total: " + tbl.getTotalPrice() + " euro(s)\n");
     }
 
     public void printTables()

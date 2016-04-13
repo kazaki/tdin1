@@ -25,10 +25,10 @@ public class Table
         Orders = new List<Order> { };
     }
 
-    public int getTotalPrice()
+    public Decimal getTotalPrice()
     {
-        int sum = 0;
-        foreach (Order o in Orders) sum += Convert.ToInt32(o.Item.Price);
+        Decimal sum = 0;
+        foreach (Order o in Orders) sum += o.Item.Price * o.Quantity;
         return sum;
     }
 }

@@ -252,8 +252,10 @@ namespace Dining_Room
             this.Controls.Add(this.cbMenu);
             this.Controls.Add(this.nudQuantity);
             this.Controls.Add(this.cbTable);
+            this.Location = new System.Drawing.Point(800, 100);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "POS: Dinning Room";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
