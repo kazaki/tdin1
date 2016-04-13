@@ -165,7 +165,12 @@ public class OrdersList : MarshalByRefObject, IOrdersList
 
         for(int i=0; i< Orders.Count; i++)
         {
-            if(Orders[i].Table.Id == id) Orders.RemoveAt(i);
+            if (Orders[i].Table.Id == id)
+            {
+                Orders[i].Status = OrderStatus.Delivered;
+                NotifyClients(Operation.Change, Orders[i]);
+                Orders.RemoveAt(i--);
+            }
         }
         Tables[id].Orders.Clear();
 
