@@ -44,6 +44,7 @@ namespace Dining_Room
             }
             else if (op == Operation.Change)
             {
+                if(bsOrders.IndexOf(order) < 0) return;
                 bsOrders[bsOrders.IndexOf(order)] = order;
                 /* Procura linha pra alterar cor */
                 foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -51,6 +52,7 @@ namespace Dining_Room
                     if (row.DataBoundItem.Equals(order))
                     {
                         switch (order.Status)
+
                         {
                             case OrderStatus.Prepararion:
                                 row.DefaultCellStyle.BackColor = System.Drawing.Color.Orange;
