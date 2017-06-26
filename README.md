@@ -2,10 +2,6 @@ Tecnologias de Distribuição e Integração
 2015/2016
 Sistema de pedidos em restauração 
 
-Grupo:
-Pedro André Ferreira de Castro Fernandes – 200903025
-Telmo Domiciano Pereira Barbosa – 20150285
-
 
 Instruções de uso:
 1.    Executar o programa de servidor “Server.exe” , que vai inciar o servidor e abrir o terminal da impressora.
